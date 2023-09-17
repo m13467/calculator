@@ -85,9 +85,11 @@ class Calculator {
         StringBuilder nBuilder = new StringBuilder(n);
         for (int i = 0; i < 10; i++) {
             String characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            long seed = System.nanoTime();
 
             // Initialize a Random object
-            Random rand = new Random();
+            Random rand = new Random(seed);
+
 
             // Generate a random index within the range of valid characters
             int randomIndex = rand.nextInt(characters.length());
@@ -98,7 +100,7 @@ class Calculator {
             nBuilder.append(randomChar);
         }
         n = nBuilder.toString();
-        return null;
+        return n;
     }
 
 
