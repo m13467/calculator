@@ -1,3 +1,5 @@
+import java.util.Random;
+
 // This is a calculator class
 class Calculator {
 
@@ -38,7 +40,13 @@ class Calculator {
     etc
      */
     int fibonacciNumberFinder(int n){
-        return 0;
+        if (n <= 0) {
+            return 0;
+        } else if (n == 1) {
+            return 1;
+        } else {
+            return fibonacciNumberFinder(n - 1) + fibonacciNumberFinder(n - 2);
+        }
     }
 
 
@@ -50,7 +58,19 @@ class Calculator {
     if int a = 16 then this method returns: 10000
      */
     String intToBinaryNumber(int number){
-        return null;
+        if (number == 0) {
+            return "0";
+        }
+
+        StringBuilder binary = new StringBuilder();
+
+        while (number > 0) {
+            int bit = number % 2;
+            binary.insert(0, bit); // Insert the bit at the beginning of the string
+            number /= 2; // Divide n by 2 to get the next bit
+        }
+
+        return binary.toString();
     }
 
     /*
@@ -62,6 +82,22 @@ class Calculator {
     if you run this function twice with the same String input, it must return 2 unique String IDs
      */
     String createUniqueID(String n){
+        StringBuilder nBuilder = new StringBuilder(n);
+        for (int i = 0; i < 10; i++) {
+            String characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+            // Initialize a Random object
+            Random rand = new Random();
+
+            // Generate a random index within the range of valid characters
+            int randomIndex = rand.nextInt(characters.length());
+
+            // Get the random character at the generated index
+            char randomChar = characters.charAt(randomIndex);
+
+            nBuilder.append(randomChar);
+        }
+        n = nBuilder.toString();
         return null;
     }
 
